@@ -20,7 +20,7 @@ for address in addresses:
         #consider removing the print line
         print(f"Geocoded: {address} -> ({lat}, {lng})")  
 
-# How to save the coordinates so you don't need geocode.
+# How to save the coordinates so you don't need geocoding
 
 
 latitudes = [lat for lat, lon in coordinates]
