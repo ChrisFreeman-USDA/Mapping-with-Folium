@@ -6,7 +6,7 @@ There are a lot of markdowns in this code. That is because different scenarios w
 
 # Initialize Google Maps client with API key
 gmaps = googlemaps.Client(key='Your API Key')
-#https://developers.google.com/maps/documentation/javascript/cloud-setup
+ #https://developers.google.com/maps/documentation/javascript/cloud-setup
 
 
 # Geocode addresses to get coordinates
