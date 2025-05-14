@@ -33,3 +33,5 @@ df['longitudes'] = longitudes
 df.to_excel('Test.xlsx', engine="openpyxl")
 
 If you do not with to use custom icons with base64, bootstrap icons also work.
+
+DOGS stands for Data on Geocoded Sites. It was chosen because we used to have a system called CATS that was used.
