@@ -1,8 +1,6 @@
 # Mapping-with-Folium
 This allows users who have a data set (and a Google Maps API key if geocoding is needed) to create an interactive map.
-
 https://python-visualization.github.io/folium/latest/
-
 There are a lot of markdowns in this code. That is because different scenarios warrant different code, but they remain there just in case. Below is the code snippet needed to geocode.
 
 
