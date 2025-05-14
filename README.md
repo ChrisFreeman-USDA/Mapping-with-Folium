@@ -20,7 +20,7 @@ for address in addresses:
         #consider removing the print line
         print(f"Geocoded: {address} -> ({lat}, {lng})")  
 
-If you wish to add this to your current data frame and save it so you don't have to geocode the same items multiple times, see below.
+# How to save the coordinates so you don't need geocode.
 
 
 latitudes = [lat for lat, lon in coordinates]
