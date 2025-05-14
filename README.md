@@ -28,6 +28,6 @@ longitudes = [lon for lat, lon in coordinates]
 
 df['latitudes'] = latitudes
 df['longitudes'] = longitudes
-# df.to_excel('Test.xlsx', engine="openpyxl")
+df.to_excel('Test.xlsx', engine="openpyxl")
 
 If you do not with to use custom icons with base64, bootstrap icons also work.
