@@ -27,7 +27,7 @@ import base64
 #Library that allows for dropdown filters(not functioning as this is an executable library)
 #from streamlit_folium import st_folium
 
-df = pd.read_excel(r"C:\Users\Christopher.Freeman\Downloads\AZ Obligations.xlsx")
+df = pd.read_excel(r"YOUR SPREADSHEET")
 
 #convert custom images using base64 to work with HTML elements
 with open("water.png", "rb") as f:
@@ -46,18 +46,16 @@ with open("business programs.png", "rb") as f:
     data = f.read()
     encoded4 = base64.b64encode(data).decode("utf-8")
 
-df=df.replace(to_replace="BUSINESS PROGRAMS", value="Business Programs")
-df=df.replace(to_replace="COMMUNITY FACILITIES", value="Community Facilities")
-df=df.replace(to_replace="WATER ENVIRONMENTAL PROGRAMS", value="Water & Environmental Programs")
-df=df.replace(to_replace="HOUSING PROGRAMS", value="Housing Programs")
+df=df.replace(to_replace="col1", value="updated col 1")
+
 
 #shape file for single state filter
-# shape_file = gpd.read_file(r"C:\Users\Christopher.Freeman\Downloads\cb_2018_us_county_500k\cb_2018_us_county_500k.shp")
+# shape_file = gpd.read_file(r"SHP FILE")
 # SDC = shape_file[shape_file["STATEFP"]=="04"]
 # SDC.to_file('AZ Counties.geojson', driver = "GeoJson")
 
 #shape file for multi state filter
-#shape_file = gpd.read_file(r"C:\Users\Christopher.Freeman\Downloads\cb_2018_us_county_500k\cb_2018_us_county_500k.shp")
+#shape_file = gpd.read_file(r"SHP FILE")
 # filter1 = shape_file["STATEFP"] == "38"
 # filter2 = shape_file["STATEFP"] == "46"
 # combined_filter = filter1 & filter2
@@ -65,7 +63,7 @@ df=df.replace(to_replace="HOUSING PROGRAMS", value="Housing Programs")
 # filter_gdf.to_file('filter_gdf.geojson', driver = "GeoJson")
 
 #Create a DF from the GeoJson file for county outlines from their geometry
-counties = gpd.read_file("AZ Counties.geojson")
+counties = gpd.read_file("GEOJSON FILE")
 
 column_headers = df.columns.tolist()
 # print(column_headers)
@@ -135,31 +133,31 @@ folium.GeoJson(counties, name="counties", style_function=lambda feature: {
    
     
 # For each Program, create a separate FeatureGroup
-for program in df['Program'].unique():
+for program in df['COL0'].unique():
     fg = folium.FeatureGroup(name=program) 
-    subset = df[df['Program'] == program]
+    subset = df[df['COL0'] == program]
     
 #Plot the points    
     for _, row in subset.iterrows():
         latlon = (row['latitudes'], row['longitudes'])
-        pname = row['Project Name']
+        pname = row['COL0']
        
      
         pop_text = (
-            f"<b>Project Description:</b> {row['Project Description']}<br>"
-            f"<b>Program:</b> {program}<br>"
-            f"<b>County:</b> {row['County']}<br>"
-            f"<b>Fiscal Year:</b> {row['Fiscal Year']}"
+            f"<b>COL1:</b> {row['COL1']}<br>"
+            f"<b>COL2:</b> {COL2}<br>"
+            f"<b>COL3:</b> {row['COL3']}<br>"
+            f"<b>COL4:</b> {row['COL4']}"
         )
     
         if program == 'Business Programs':
-            icon = folium.CustomIcon('business programs.png', icon_size=(20,20))
+            icon = folium.CustomIcon('CUSTOM ICON LOCATION', icon_size=(20,20))
         elif program == 'Single Family Housing':
-            icon = folium.CustomIcon('housing programs.png', icon_size=(20,20))
+            icon = folium.CustomIcon('CUSTOM ICON LOCATION', icon_size=(20,20))
         elif program == 'Water and Environmental':
-            icon = folium.CustomIcon('water.png', icon_size=(20,20))
+            icon = folium.CustomIcon('CUSTOM ICON LOCATION', icon_size=(20,20))
         elif program == 'Community Facilities':
-            icon = folium.CustomIcon('community programs.png', icon_size=(20,20))
+            icon = folium.CustomIcon('CUSTOM ICON LOCATION', icon_size=(20,20))
             
             
         folium.Marker(
@@ -185,10 +183,10 @@ legend_html = f"""
     background-color:white; opacity: 0.9;
     padding: 10px;">
 <b>Legend</b><br>
-<img src="data:image/png;base64,{encoded}" style="height:20px;"> Water & Environmental<br>
-<img src="data:image/png;base64,{encoded2}" style="height:20px;"> Housing<br>
-<img src="data:image/png;base64,{encoded3}" style="height:20px;"> Community Facilities<br>
-<img src="data:image/png;base64,{encoded4}" style="height:20px;"> Business Programs<br>
+<img src="data:image/png;base64,{encoded}" style="height:20px;"> CUSTOM IMAGE<br>
+<img src="data:image/png;base64,{encoded2}" style="height:20px;"> CUSTOM IMAGE<br>
+<img src="data:image/png;base64,{encoded3}" style="height:20px;"> CUSTOM IMAGE<br>
+<img src="data:image/png;base64,{encoded4}" style="height:20px;"> CUSTOM IMAGE<br>
 </div>
 {{% endmacro %}}
 """
@@ -202,9 +200,9 @@ custom_html = Element("""
         border: 2px solid black; z-index: 9999; font-size: 12px;
         background-color: white; opacity: 0.9;
         padding: 0px; text-align: center;">
-      Created by <a href="mailto:christopher.freeman@usda.gov?subject=DOGS Map" 
+      Created by <a href="mailto:EMAIL?subject=SUBJECT" 
       style="text-decoration: none; color: blue;">
-      <b>Christopher Freeman</b></a> / USDA RD ND
+      <b>NAME</b></a> / ORGANIZATION
     </div>
 """)
 fmap.get_root().html.add_child(custom_html)
@@ -216,7 +214,7 @@ legend._template = branca.element.Template(legend_html)
 fmap.get_root().add_child(legend)
     
 #Print the map  
-fmap.save('AZ Obligation Map.html')
+fmap.save('NAME OF OUTPUT FILE')
 
 #Display map in Juypter
-#display(IFrame('AZ Obligation Map.html', width='100%', height='500px'))
+#display(IFrame('NAME OF OUTPUT FILE', width='100%', height='500px'))
