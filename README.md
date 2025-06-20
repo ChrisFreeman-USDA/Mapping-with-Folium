@@ -36,7 +36,7 @@ If you do not with to use custom icons with base64, bootstrap icons also work.
 
 DOGS stands for Data on Geocoded Sites. It was chosen because we used to have a system called CATS that was used.
 
-#Visualization customization
+# Visualization customization
 These scripts have custom visualization, ranging from custom icons using base64, to popups, and a draw feature (draw has additional polygons you can draw with, but they were not needed for this application)
 
 
