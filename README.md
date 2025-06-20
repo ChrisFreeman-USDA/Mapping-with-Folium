@@ -47,7 +47,7 @@ These scripts have custom visualization, ranging from custom icons using base64,
 
 
 
-#License Information
+# License Information
 
                     GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
