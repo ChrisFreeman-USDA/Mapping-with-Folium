@@ -26,26 +26,17 @@ def run_flask():
     flask_app.run(debug=True, use_reloader=False)
 
 
-# if hasattr(sys, '_MEIPASS'):
-#     base_path = sys._MEIPASS
-# else:
-#     base_path = os.path.abspath(".")
-
-# header_path = os.path.join(base_path, "USDA Solid Color Logo.png")
-# business_icon_path = os.path.join(base_path, "business programs.png")
-# housing_icon_path = os.path.join(base_path, "housing programs.png")
-# water_icon_path = os.path.join(base_path, "water.png")
-# community_icon_path = os.path.join(base_path, "community programs.png")
 
 
-# -------------------- Create the main Tkinter window and global StringVars --------------------
+
+# -------------------- Create the main Tkinter window --------------------
 app = tk.Tk()
 app.title("Spreadsheet Map Generator")
 app.geometry("800x600")
 app.configure(bg="white")
 app.option_add("*Font", "Arial 12")
 
-# Global StringVar objects that will be used in our functions and status updates.
+# Global StringVar objects that will be used in functions and status updates.
 status_var = tk.StringVar(value="Ready")
 sheet_path_var = tk.StringVar(value="No file selected")
 geojson_path_var = tk.StringVar(value="No file selected")
