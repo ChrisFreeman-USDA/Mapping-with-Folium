@@ -26,17 +26,26 @@ def run_flask():
     flask_app.run(debug=True, use_reloader=False)
 
 
+# if hasattr(sys, '_MEIPASS'):
+#     base_path = sys._MEIPASS
+# else:
+#     base_path = os.path.abspath(".")
+
+# header_path = os.path.join(base_path, "USDA Solid Color Logo.png")
+# business_icon_path = os.path.join(base_path, "business programs.png")
+# housing_icon_path = os.path.join(base_path, "housing programs.png")
+# water_icon_path = os.path.join(base_path, "water.png")
+# community_icon_path = os.path.join(base_path, "community programs.png")
 
 
-
-# -------------------- Create the main Tkinter window --------------------
+# -------------------- Create the main Tkinter window and global StringVars --------------------
 app = tk.Tk()
 app.title("Spreadsheet Map Generator")
 app.geometry("800x600")
 app.configure(bg="white")
 app.option_add("*Font", "Arial 12")
 
-# Global StringVar objects that will be used in functions and status updates.
+# Global StringVar objects that will be used in our functions and status updates.
 status_var = tk.StringVar(value="Ready")
 sheet_path_var = tk.StringVar(value="No file selected")
 geojson_path_var = tk.StringVar(value="No file selected")
@@ -166,13 +175,13 @@ def generate_map():
                 )
                 # Custom icons based on program names.
                 if program == 'Business Programs':
-                    icon = folium.CustomIcon('business programs.png', icon_size=(20, 20))
+                    icon = folium.CustomIcon(r'Icons\business programs.png', icon_size=(20, 20))
                 elif program == 'Single Family Housing':
-                    icon = folium.CustomIcon('housing programs.png', icon_size=(20, 20))
+                    icon = folium.CustomIcon(r'Icons\housing programs.png', icon_size=(20, 20))
                 elif program == 'Water and Environmental':
-                    icon = folium.CustomIcon('water.png', icon_size=(20, 20))
+                    icon = folium.CustomIcon(r'Icons\water.png', icon_size=(20, 20))
                 elif program == 'Community Facilities':
-                    icon = folium.CustomIcon('community programs.png', icon_size=(20, 20))
+                    icon = folium.CustomIcon(r'Icons\community programs.png', icon_size=(20, 20))
                 else:
                     icon = None  # fallback to default marker
 
@@ -195,10 +204,10 @@ def generate_map():
             with open(path, "rb") as image_file:
                 return base64.b64encode(image_file.read()).decode('utf-8')
         try:
-            encoded = encode_img("water.png")
-            encoded2 = encode_img("housing programs.png")
-            encoded3 = encode_img("community programs.png")
-            encoded4 = encode_img("business programs.png")
+            encoded = encode_img(r"Icons\water.png")
+            encoded2 = encode_img(r"Icons\housing programs.png")
+            encoded3 = encode_img(r"Icons\community programs.png")
+            encoded4 = encode_img(r"Icons\business programs.png")
         except Exception as e:
             print("Error encoding images for legend:", e)
             encoded = encoded2 = encoded3 = encoded4 = ""
@@ -421,5 +430,7 @@ if __name__ == "__main__":
     flask_thread.daemon = True
     flask_thread.start()
     app.mainloop()
+
+
 
 
