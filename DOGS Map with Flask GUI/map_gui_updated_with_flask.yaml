@@ -1,0 +1,6 @@
+command: [
+  "flask",
+  "--app",
+  "map_gui_updated_with_flask.py",
+  "run"
+]
