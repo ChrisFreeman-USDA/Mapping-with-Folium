@@ -1,6 +1,0 @@
-command: [
-  "flask",
-  "--app",
-  "DOGS_databricks.py",
-  "run"
-]
