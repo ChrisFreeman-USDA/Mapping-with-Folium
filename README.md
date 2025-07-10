@@ -1,5 +1,5 @@
 # Thanks and Appreciation
-This would not have been possible without the immense help from the USDA Data Science Training Program facilitators, Michael Frye, Chris Stewart, and db55falcon. What started as a "what if" turned into a project I am extremely proud of.
+This would not have been possible without the immense help from the USDA Data Science Training Program facilitators, Michael Frye, Chris Stewart, Tegan Fager, and db55falcon. What started as a "what if" turned into a project I am extremely proud of.
 
 # Mapping-with-Folium
 This allows users who have a data set (and a Google Maps API key if geocoding is needed) to create an interactive map.
