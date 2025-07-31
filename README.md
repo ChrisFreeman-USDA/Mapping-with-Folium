@@ -1,8 +1,10 @@
+# DOGS stands for Data on Geocoded Sites. It was chosen because we used to have a system called CATS that was used.
+
 # Thanks and Appreciation
 This would not have been possible without the immense help from the USDA Data Science Training Program facilitators, Michael Frye, Chris Stewart, Tegan Fager, and db55falcon. What started as a "what if" turned into a project I am extremely proud of.
 
 # Mapping-with-Folium
-This allows users who have a data set (and a Google Maps API key if geocoding is needed) to create an interactive map.
+This allows users who have a data set (and a Google Maps API key if geocoding is needed) to create an interactive map. The purpose of this is to give the end user a simple way to create an interactive map.
 
 https://python-visualization.github.io/folium/latest/
 
@@ -10,45 +12,37 @@ There are a lot of markdowns in this code. That is because different scenarios w
 
 
 # Initialize Google Maps client with API key
+
+If geocoding is needed, you will need an API key. There is a free tier, but it has limited calls per month. Reference their documentation for specific information.
 gmaps = googlemaps.Client(key='Your API Key')
 https://developers.google.com/maps/documentation/javascript/cloud-setup
 
+# GeoJSON
+Shape files can be used here. I have tested one with state county boundaries and congressional district boundaries. Both have worked. For most of the scripts, you would need to manually change the coodinates (in the original script, it is on line 81: fmap = folium.Map(location=(34.0489, -111.0937))
 
-# Geocode addresses to get coordinates
-coordinates = []
-for address in addresses:
-    geocode_result = gmaps.geocode(address)
-    if geocode_result:
-        lat = geocode_result[0]['geometry']['location']['lat']
-        lng = geocode_result[0]['geometry']['location']['lng']
-        coordinates.append((lat, lng))
-        #consider removing the print line
-        print(f"Geocoded: {address} -> ({lat}, {lng})")  
-
-# How to save the coordinates so you don't need geocoding
+I also marked out the GeoJSON file creation because if you run it more than once, it will throw errors.
 
 
-latitudes = [lat for lat, lon in coordinates]
-longitudes = [lon for lat, lon in coordinates]
-
-df['latitudes'] = latitudes
-df['longitudes'] = longitudes
-df.to_excel('Test.xlsx', engine="openpyxl")
+# Notes
 
 If you do not with to use custom icons with base64, bootstrap icons also work.
 
-DOGS stands for Data on Geocoded Sites. It was chosen because we used to have a system called CATS that was used.
+In order to change which columns are referenced in which popup, you would need to change the column names in the code.
+
+You will notice mentions of USDA in the scripts. **This is not endorsed by USDA**, but was rather created by me as a USDA employee. Since the original intent was for this to be an internal tool, that was left in.
+
+This Read Me will not cover every scenario. If you run into errors, I would suggest referencing the folium repositories as well as paying attention to the logs in your terminal. This helped me debug numerous items throughout the creation of the scripts.
+
+There are multiple iterations of the base script. That is because, as I tested new features, certain core items changed. This allows users to see the progression, but always have a baseline to reference.
+
+This is also in the works to be hosted on Databricks. As of 30 JUL 2025, there is a basic version deployed, but it needs refinement to replicate the fully customized version (Databricks and GUI do not mix, unless you are using a Notebook)
+
+
+
+
 
 # Visualization customization
 These scripts have custom visualization, ranging from custom icons using base64, to popups, and a draw feature (draw has additional polygons you can draw with, but they were not needed for this application)
-
-
-
-
-
-
-
-
 
 # License Information
 
