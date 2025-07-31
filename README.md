@@ -1,4 +1,5 @@
-# DOGS stands for Data on Geocoded Sites. It was chosen because we used to have a system called CATS that was used.
+# DOGS stands for Data on Geocoded Sites. 
+It was chosen because we used to have a system called CATS that was used.
 
 # Thanks and Appreciation
 This would not have been possible without the immense help from the USDA Data Science Training Program facilitators, Michael Frye, Chris Stewart, Tegan Fager, and db55falcon. What started as a "what if" turned into a project I am extremely proud of.
