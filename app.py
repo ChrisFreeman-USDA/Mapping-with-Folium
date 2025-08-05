@@ -32,18 +32,19 @@ app = Flask(__name__)
 
 # Load data and images
 
-df = pd.read_excel(r"SPREADSHEEET LOCATION")
+file_path = "./data/Sample Spreadsheet for GitHub.xlsx"
+df = pd.read_excel(file_path)
 
-with open("water.png", "rb") as f:
+with open("./images/water.png", "rb") as f:
     data = f.read()
     encoded = base64.b64encode(data).decode("utf-8")
-with open("housing programs.png", "rb") as f:
+with open("./images/housing programs.png", "rb") as f:
     data = f.read()
     encoded2 = base64.b64encode(data).decode("utf-8")
-with open("community programs.png", "rb") as f:
+with open("./images/community programs.png", "rb") as f:
     data = f.read()
     encoded3 = base64.b64encode(data).decode("utf-8")
-with open("business programs.png", "rb") as f:
+with open("./images/business programs.png", "rb") as f:
     data = f.read()
     encoded4 = base64.b64encode(data).decode("utf-8")
 
@@ -54,7 +55,7 @@ df = df.replace({
     "HOUSING PROGRAMS": "Housing Programs"
 })
 
-counties = gpd.read_file("GeoJSON file")
+counties = gpd.read_file("./data/MO Counties.geojson")
 
 df['latitudes'] = pd.to_numeric(df['latitudes'], errors='coerce')
 df['longitudes'] = pd.to_numeric(df['longitudes'], errors='coerce')
@@ -68,7 +69,7 @@ def test():
 
 @app.route('/')
 def index():
-    fmap = folium.Map(location=(34.0489, -111.0937), control_scale=True, zoom_start=7, tiles='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', attr='OpenStreetMap')
+    fmap = folium.Map(location=(37.9643, -91.8318), control_scale=True, zoom_start=7, tiles='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', attr='OpenStreetMap')
 
     draw = Draw(
         draw_options={
@@ -101,14 +102,16 @@ def index():
                 f"<b>County:</b> {row['County']}<br>"
                 f"<b>Fiscal Year:</b> {row['Fiscal Year']}"
             )
+
+
             if program == 'Business Programs':
-                icon = folium.CustomIcon('business programs.png', icon_size=(20,20))
+                icon = folium.CustomIcon('./images/business programs.png', icon_size=(20,20))
             elif program == 'Single Family Housing':
-                icon = folium.CustomIcon('housing programs.png', icon_size=(20,20))
+                icon = folium.CustomIcon('./images/housing programs.png', icon_size=(20,20))
             elif program == 'Water and Environmental':
-                icon = folium.CustomIcon('water.png', icon_size=(20,20))
+                icon = folium.CustomIcon('./images/water.png', icon_size=(20,20))
             elif program == 'Community Facilities':
-                icon = folium.CustomIcon('community programs.png', icon_size=(20,20))
+                icon = folium.CustomIcon('./images/community programs.png', icon_size=(20,20))
 
             folium.Marker(
                 location=latlon, tooltip=pname, popup=folium.Popup(pop_text, max_width=300), icon=icon

@@ -1,6 +1,6 @@
 command: [
   "flask",
   "--app",
-  "map_gui_no_tkinter.py",
+  "app.py",
   "run"
 ]
