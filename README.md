@@ -1,3 +1,8 @@
+# Summary 
+As a communicator in a government agency, maximizing efforts to inform and interact with our audiences is a cornerstone of the profession. This becomes more challenging as we travel across the state, often to the most rural of areas. Our current tools in use require us to know every location across a state, which is not generally feasible. According to the North Dakota League of Cities, there are 355 incorporated cities spread across the state. With the large majority of those being classified as rural or frontier, our eligible program areas encompass most of the state. Relying on someone to know where every single one of our obligated projects are, then to aggregate it with funded projects within a reasonable travel distance is inefficient use of time and resources. 
+
+When planning for outreach events, trying to coordinate additional visits in conjunction with the main outreach event presents a challenge. The information needed is not plotted on a map and is instead relegated to a spreadsheet. The Python script for this capstone shows a way to visualize projects, with usage for both past and present. The script scrubs the spreadsheet and plots the points in an HTML format that is shareable with others..
+
 # DOGS stands for Data on Geocoded Sites. 
 It was chosen because we used to have a system called CATS that was used.
 
